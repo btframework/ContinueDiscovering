@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 
 using wclBluetooth;
@@ -36,7 +34,7 @@ namespace ContinueDiscovering
                 lbLog.Items.Add("Open failed; 0x" + Res.ToString("X8"));
         }
 
-        void FDisc_OnDeviceLost(object sender, Int64 Address)
+        private void FDisc_OnDeviceLost(object sender, Int64 Address)
         {
             lbLog.Items.Add("Device lost: " + Address.ToString("X12"));
             foreach (ListViewItem Item in lvDevices.Items)
@@ -48,8 +46,8 @@ namespace ContinueDiscovering
                 }
             }
         }
-        
-        void  FDisc_OnDeviceFound(object sender, Int64 Address)
+
+        private void FDisc_OnDeviceFound(object sender, Int64 Address)
         {
             lbLog.Items.Add("Device found: " + Address.ToString("X12"));
             ListViewItem Item = lvDevices.Items.Add(Address.ToString("X12"));
@@ -62,14 +60,14 @@ namespace ContinueDiscovering
             Item.SubItems.Add(Name);
         }
 
-        void FDisc_OnStopped(object sender, EventArgs e)
+        private void FDisc_OnStopped(object sender, EventArgs e)
         {
             lbLog.Items.Add("Stopped");
 
             lvDevices.Items.Clear();
         }
 
-        void FDisc_OnStarted(object sender, EventArgs e)
+        private void FDisc_OnStarted(object sender, EventArgs e)
         {
             lbLog.Items.Add("Started");
         }
@@ -97,7 +95,7 @@ namespace ContinueDiscovering
             if (Res != wclErrors.WCL_E_SUCCESS)
                 lbLog.Items.Add("Stop failed: 0x" + Res.ToString("X8"));
         }
-    }
+    };
 
     public delegate void DeviceEvent(Object sender, Int64 Address);
 
@@ -228,5 +226,5 @@ namespace ContinueDiscovering
         public event DeviceEvent OnDeviceLost;
         public event EventHandler OnStarted;
         public event EventHandler OnStopped;
-    }
+    };
 }
