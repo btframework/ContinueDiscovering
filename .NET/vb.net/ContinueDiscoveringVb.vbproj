@@ -64,6 +64,7 @@
     <Import Include="wclCommunication" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Discoverer.vb" />
     <Compile Include="main.vb">
       <SubType>Form</SubType>
     </Compile>
