@@ -24,7 +24,7 @@ namespace ContinueDiscovering
             FDisc = new Discoverer();
             FDisc.OnStarted += new EventHandler(FDisc_OnStarted);
             FDisc.OnStopped += new EventHandler(FDisc_OnStopped);
-            FDisc.OnDeviceFound +=new DeviceEvent(FDisc_OnDeviceFound);
+            FDisc.OnDeviceFound += new DeviceEvent(FDisc_OnDeviceFound);
             FDisc.OnDeviceLost += new DeviceEvent(FDisc_OnDeviceLost);
 
             Int32 Res = FDisc.Open();

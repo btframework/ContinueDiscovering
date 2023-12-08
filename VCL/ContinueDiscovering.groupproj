@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C310A29C-5F6C-4B87-A3BD-E34D8CD1050E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Delphi\ContinueDiscoveringDelphi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ContinueDiscoveringDelphi">
+        <MSBuild Projects="Delphi\ContinueDiscoveringDelphi.dproj"/>
+    </Target>
+    <Target Name="ContinueDiscoveringDelphi:Clean">
+        <MSBuild Projects="Delphi\ContinueDiscoveringDelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ContinueDiscoveringDelphi:Make">
+        <MSBuild Projects="Delphi\ContinueDiscoveringDelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ContinueDiscoveringDelphi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ContinueDiscoveringDelphi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ContinueDiscoveringDelphi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
