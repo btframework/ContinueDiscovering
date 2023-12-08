@@ -6,6 +6,9 @@
         <Projects Include="Delphi\ContinueDiscoveringDelphi.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="CBuilder\ContinueDiscoveringCBuilder.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="ContinueDiscoveringDelphi:Make">
         <MSBuild Projects="Delphi\ContinueDiscoveringDelphi.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ContinueDiscoveringCBuilder">
+        <MSBuild Projects="CBuilder\ContinueDiscoveringCBuilder.cbproj"/>
+    </Target>
+    <Target Name="ContinueDiscoveringCBuilder:Clean">
+        <MSBuild Projects="CBuilder\ContinueDiscoveringCBuilder.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ContinueDiscoveringCBuilder:Make">
+        <MSBuild Projects="CBuilder\ContinueDiscoveringCBuilder.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ContinueDiscoveringDelphi"/>
+        <CallTarget Targets="ContinueDiscoveringDelphi;ContinueDiscoveringCBuilder"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ContinueDiscoveringDelphi:Clean"/>
+        <CallTarget Targets="ContinueDiscoveringDelphi:Clean;ContinueDiscoveringCBuilder:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ContinueDiscoveringDelphi:Make"/>
+        <CallTarget Targets="ContinueDiscoveringDelphi:Make;ContinueDiscoveringCBuilder:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
